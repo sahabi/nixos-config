@@ -1,0 +1,2 @@
+#!/run/current-system/sw/bin/sh
+curl -sSl https://api.coindesk.com/v1/bpi/currentprice.json | jq '. | .bpi.USD.rate' | cut -c2-  | rev | cut -c4- | rev

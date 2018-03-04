@@ -1,0 +1,2 @@
+#!/run/current-system/sw/bin/sh
+df -H | grep "/dev/sda3" | awk '{print $3 "/" $2}'
