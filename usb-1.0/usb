@@ -4,7 +4,7 @@ IFS=', ' read -r -a array <<< "$A"
 if [ ${#array[@]} -lt 6 ]; then
   echo "-"
 else
-  if [ ${#array[@]} == 5 ]; then
+  if [ ${#array[@]} == 6 ]; then
     echo "Unmounted"
   else
     echo "${array[6]}"
