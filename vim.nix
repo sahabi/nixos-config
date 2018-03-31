@@ -45,8 +45,11 @@ vim_configurable.customize {
   			let g:syntastic_check_on_open = 1
 				let g:syntastic_check_on_wq = 0
           set pastetoggle=<F2>
-    '';
-        # Use the default plugin list shipped with nixpkgs
+        map <silent> tw :GhcModTypeInsert<CR>
+        map <silent> ts :GhcModSplitFunCase<CR>
+        map <silent> tq :GhcModType<CR>
+        map <silent> te :GhcModTypeClear<CR>  '';
+    # Use the default plugin list shipped with nixpkgs
     vimrcConfig.vam.knownPlugins = pkgs.vimPlugins;
     vimrcConfig.vam.pluginDictionaries = [
         { names = [
@@ -55,6 +58,7 @@ vim_configurable.customize {
             "lightline-vim"
             "haskell-vim"
             "vim-colorschemes"
-        ]; }
+            "ghc-mod-vim"
+            "vimproc" ]; }
     ];
 }

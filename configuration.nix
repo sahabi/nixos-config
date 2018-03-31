@@ -34,6 +34,8 @@
       (import ./mem.nix)
       (import ./usb.nix)
       (import ./bitcoin-price.nix)
+      (import ./lnd.nix)
+      (import ./trezor-bridge.nix)
       alsaUtils
       cpufrequtils
       cryptsetup
@@ -131,6 +133,7 @@
       haskellPackages.xmobar
       stalonetray
       stack
+      thunderbird
       wpa_supplicant_gui
       xfontsel
       xlibs.xev
@@ -139,7 +142,12 @@
       xlibs.xmodmap
     ];
   };
-
+  services.udev = {
+    extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0666", GROUP="dialout", SYMLINK+="trezor%n"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="534c", ATTRS{idProduct}=="0001",  MODE="0666", GROUP="dialout"
+    '' ;
+  };
   # XXX: add more fonts!
   fonts = {
     enableCoreFonts = true;

@@ -1,5 +1,5 @@
 #!/run/current-system/sw/bin/sh
-A=$(lsblk | grep "sdb")
+A=$(lsblk | grep "sdc")
 IFS=', ' read -r -a array <<< "$A"
 if [ ${#array[@]} -lt 6 ]; then
   echo "-"
